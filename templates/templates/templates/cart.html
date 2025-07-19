@@ -1,25 +1,4 @@
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8" />
-    <title>Корзина - NOIRÉ</title>
-    <style>
-        body { background: #121212; color: #eee; font-family: Arial, sans-serif; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { border: 1px solid #444; padding: 10px; text-align: left; }
-        a { color: #a8a8a8; text-decoration: none; }
-        a:hover { color: #fff; }
-        .total { font-weight: bold; }
-    </style>
-</head>
-<body>
-    <h1>Корзина</h1>
-    <a href="{{ url_for('index') }}">Вернуться к покупкам</a>
-    {% if cart %}
-    <table>
-        <tr>
-            <th>Товар</th>
-            <th>Количество</th>
+Количество</th>
             <th>Цена</th>
         </tr>
         {% for id, qty in cart.items() %}
