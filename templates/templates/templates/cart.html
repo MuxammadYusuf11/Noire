@@ -1,21 +1,31 @@
-Количество</th>
-            <th>Цена</th>
-        </tr>
-        {% for id, qty in cart.items() %}
-        <tr>
-            <td>{{ products[id].name }}</td>
-            <td>{{ qty }}</td>
-            <td>${{ products[id].price * qty }}</td>
-        </tr>
-        {% endfor %}
-        <tr>
-            <td colspan="2" class="total">Итого</td>
-            <td class="total">${{ total }}</td>
-        </tr>
-    </table>
-    <a href="{{ url_for('clear_cart') }}">Очистить корзину</a>
-    {% else %}
-    <p>Корзина пуста.</p>
-    {% endif %}
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<title>Корзина - NOIRÉ</title>
+<style>
+  body { background: #121212; color: #eee; font-family: Arial, sans-serif; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { border: 1px solid #444; padding: 10px; }
+  a { color: #a8a8a8; text-decoration: none; } a:hover { color: #fff; }
+</style>
+</head>
+<body>
+<h1>Корзина</h1>
+<a href="{{ url_for('index') }}">Вернуться к покупкам</a> | 
+<a href="{{ url_for('clear_cart') }}">Очистить корзину</a>
+{% if cart %}
+<table>
+  <tr><th>Товар</th><th>Количество</th><th>Цена</th></tr>
+  {% for id, qty in cart.items() %}
+  <tr>
+    <td>{{ products[id].name }}</td><td>{{ qty }}</td><td>${{ product.price * qty }}</td>
+  </tr>
+  {% endfor %}
+  <tr><td colspan="2">Итого:</td><td>${{ total }}</td></tr>
+</table>
+{% else %}
+<p>Корзина пуста.</p>
+{% endif %}
 </body>
 </html>
