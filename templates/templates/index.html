@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>NOIRÉ - Магазин одежды</title>
+    <style>
+        body { background: #121212; color: #eee; font-family: Arial, sans-serif; }
+        .product { border: 1px solid #444; margin: 10px; padding: 10px; border-radius: 5px; }
+        a { color: #a8a8a8; text-decoration: none; }
+        a:hover { color: #fff; }
+    </style>
+</head>
+<body>
+    <h1>NOIRÉ - Магазин одежды</h1>
+    <a href="{{ url_for('cart') }}">Корзина</a>
+    <div>
+        {% for id, product in products.items() %}
+        <div class="product">
+            <h3>{{ product.name }}</h3>
+            <p>Цена: ${{ product.price }}</p>
+            <a href="{{ url_for('add_to_cart', product_id=id) }}">Добавить в корзину</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
